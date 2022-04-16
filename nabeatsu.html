@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界のナベアツ</title>
+</head>
+<body>
+    <script>
+        const kana = [
+            ["", "いち", "に", "さん", "よん", "ご", "ろく", "なな", "はち", "きゅう"],
+            ["", "じゅう", "にじゅう", "さんじゅう", "よんじゅう", "ごじゅう", "ろくじゅう", "ななじゅう", "はちじゅう", "きゅうじゅう"]
+        ];
+
+        for(let i = 1; i < 100; i++){
+            // 3の倍数か3がつく数字だけアホになる
+            if(i % 3 === 0 || parseInt(i / 10) === 3 || (parseInt(i % 10) === 3)){
+                document.write(kana[1][parseInt(i / 10)] + kana[0][parseInt(i % 10)] + " ( ﾟ∀ ﾟ)<br>");
+            }else{
+                document.write(i + "<br>")
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8クイーン完全版</title>
+</head>
+<body>
+    <script>
+/*
+メモ：すべてのパターンを求めるプログラムにしたい（点対象もあるから複数あるはず）
+    このプログラムだと木構造で深さ優先探索をしている→一つ見つけたら答えをメモして継続的に次の探索をすれば良い
+    答えをメモするのは一次元配列に一次元配列をプッシュしていけばよい
+    （大塚先生のコメント）---
+    １列にしかおけないことに気がつけば、[0,1,2,3,4,5,6,7]の並べ替えしか解がない事に気づくはずです。
+    問題なく置けているかをチェックする関数を用意して、総当りで回せば全部の解をだすことができるはずです。
+    また、上下反転、左右反転があるので、全く同じミラーがない限り解は４の倍数になりそうですね。
+    ---
+    なるほど
+*/
+        const masu = ["o ", "x ", "q "];//マスの種類と表示文字定義[0:何もない, 1:効きがある, 2:クイーンがある]
+    //function
+        //指定マスにクイーンを置けるか判定する関数、0が置ける判定
+        function func_check(arr, x, y){
+            for(let i = 0; i < arr.length; i++){
+                if(x === i && y === arr[i]){
+                    return 2;//そこにクイーンが鎮座している
+                }else if(x === i || y === arr[i]){
+                    return 1;//縦横の直線上にクイーンが鎮座している
+                }else{
+                    for(let j = 1; j < 8; j++){
+                        if(x === i - j && y === arr[i] - j){
+                            return 1;//左上にクイーンが鎮座している
+                        }else if(x === i + j && y === arr[i] + j){
+                            return 1;//右下にクイーンが鎮座している
+                        }else if(x === i - j && y === arr[i] + j){
+                            return 1;//右上にクイーンが鎮座している
+                        }else if(x === i + j && y === arr[i] - j){
+                            return 1;//左下にクイーンが鎮座している
+                        }
+                    }
+                }
+            }
+            return 0;//おめでとう！置くことができるぞ！
+        }
+        function func_print(arr){
+            //arrの盤面を出力
+            for (let i = 0; i < 8; i++){
+                for (let j = 0;j < 8; j++){
+                    document.write(masu[func_check(arr, i, j)]);
+                }
+                document.write("<br>");
+            }
+        }
+        function func_solve(arr){
+            if(arr.length === 8){
+                solution.push(arr.slice(0,8));
+                return;
+            }
+            for(let i = 0; i < 8; i++){
+                // 座標(arr.length, i)に置けるか試す
+                if(func_check(arr, arr.length, i) === 0){
+                    //現状そこに置ける
+                    arr.push(i);
+                    //再帰的に呼ぶ
+                    func_solve(arr);
+                    arr.pop();
+                }
+            }
+        }
+    //main
+        let board = [];
+        let solution = [];
+        func_solve(board);
+
+        document.write(solution.length + "個の解がありました<br>");
+
+        for(let i = 0;i < solution.length; i++){
+            func_print(solution[i]);
+            document.write("<br>");
+        }
+
+
+    </script>
+</body>
+</html>

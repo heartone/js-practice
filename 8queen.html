@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8クイーン</title>
+</head>
+<body>
+    <script>
+        const masu = ["o ", "x ", "q "];//マスの種類と表示文字定義[0:何もない, 1:効きがある, 2:クイーンがある]
+    //function
+        //指定マスにクイーンを置けるか判定する関数、0が置ける判定
+        function func_check(arr, x, y){
+            for(let i = 0; i < arr.length; i++){
+                if(x === i && y === arr[i]){
+                    return 2;//そこにクイーンが鎮座している
+                }else if(x === i || y === arr[i]){
+                    return 1;//縦横の直線上にクイーンが鎮座している
+                }else{
+                    for(let j = 1; j < 8; j++){
+                        if(x === i - j && y === arr[i] - j){
+                            return 1;//左上にクイーンが鎮座している
+                        }else if(x === i + j && y === arr[i] + j){
+                            return 1;//右下にクイーンが鎮座している
+                        }else if(x === i - j && y === arr[i] + j){
+                            return 1;//右上にクイーンが鎮座している
+                        }else if(x === i + j && y === arr[i] - j){
+                            return 1;//左下にクイーンが鎮座している
+                        }
+                    }
+                }
+            }
+            return 0;//おめでとう！置くことができるぞ！
+        }
+        function func_print(arr){
+            //arrの盤面を出力
+            for (let i = 0; i < 8; i++){
+                for (let j = 0;j < 8; j++){
+                    document.write(masu[func_check(arr, i, j)]);
+                }
+                document.write("<br>");
+            }
+        }
+        function func_solve(arr){
+            if(arr.length === 8){
+                return 100;
+            }
+            //置けるならi、だめなら-1をreturn
+            for(let i = 0; i < 8; i++){
+                // let arrcp = arr.slice(0, arr.length);
+                if(func_check(arr, arr.length, i) === 0){
+                    //現状そこに置ける
+                    arr.push(i);
+                    //再帰的に呼ぶ
+                    if(func_solve(arr) >= 0){
+                        return ;
+                    }
+                    arr.pop();
+                }
+            }
+            return -1;//置けない
+        }
+    //main
+        let board = [];
+        func_solve(board);
+        func_print(board);
+
+
+/*
+メモ：各列、各行に対してクイーンが必ず1つだけおいてあることになる。なぜなら縦横に攻撃範囲が伸びて8x8マスにクイーン8個だから
+    つまり、一個置いたらその行と列(と斜め)は探索する意味がない
+    逆に言えば、縦横斜めを見てクイーンがいなければ新たに置くことができる
+    置けるマスを見つけ次第適当に置いてみたらどうか？(貪欲法)→最適解にならず5個置いて終了
+    深さ優先探索で再帰関数回して二次元配列に愚直に範囲を上書きしていく？→配列の管理と巻き戻し処理がまどろっこしい
+    気づき：一行に1個しか置かない制限あるなら、一次元配列で管理出来ね？
+    arr=[3,1,7,2,6,4,5,0];としたら座標(0,3),(1,1),(2,7)...,(7,0)にクイーンを置いていることを表す
+    arr=[0,4,6];なら座標(0,0),(1,4),(2,6)に置いてる、まだ下５行置けることを表す
+    これなら関数に引数渡すとき二次元配列じゃなくて済むしpushとpopも簡単。ｷﾀ――(ﾟ∀ﾟ)――!!
+
+*/
+
+    </script>
+</body>
+</html>

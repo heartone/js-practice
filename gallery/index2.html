@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Photo Gallery</title>
+    <style>
+      img { max-width: 100%; }
+      .thumbnail {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 1px;
+      }
+      .thumbnail li{
+        width: 20%;
+        margin: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-photo">
+        <img src="photos/photo01.png">
+      </div>
+      <ul class="thumbnail">
+        <li><img src="photos/photo01.png"></li>
+        <li><img src="photos/photo02.png"></li>
+        <li><img src="photos/photo03.png"></li>
+        <li><img src="photos/photo04.png"></li>
+        <li><img src="photos/photo05.png"></li>
+      </ul>
+    </div>
+    <script>
+      const photos = document.querySelectorAll("li img");
+      const mainPhoto = document.querySelector(".main-photo img");
+      photos.forEach(photo => {
+        photo.addEventListener("click", () =>  mainPhoto.src = photo.src);
+      });
+    </script>
+  </body>
+</html>

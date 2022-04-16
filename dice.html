@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サイコロゲーム</title>
+    <style>
+        .yaku {
+            width: 260px;
+        }
+        .dice {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/dice_1.png" class="dice">
+    <img src="images/dice_1.png" class="dice">
+    <img src="images/dice_1.png" class="dice">
+    <p id="message"></p>
+    <a href="">サイコロを振る</a>
+    <hr>
+    <img src="images/yaku.png" class="yaku">
+
+    <script>
+        let images = document.querySelectorAll('img.dice');
+        dices = [];
+        for (i = 0; i < 3; i++) {
+            let dice = Math.floor(Math.random() * 6) + 1
+            dices.push(dice);
+            images[i].src = "images/dice_" + dice + ".png";
+        }
+        dices.sort()
+        let yaku = "役なし";
+        let score = -1;
+        // 役判定
+        if (dices[0] == dices[2]) {            
+            if (dices[0] == 1) {
+                yaku = "ピンゾロ";
+                score = 5;
+            } else {
+                yaku = "ゾロ目"
+                score = 3
+            }            
+        } else {            
+            if (dices[0] == 4 && dices[1] == 5 && dices[2] == 6) {
+                yaku = "シゴロ";
+                score = 2;
+            } else if (dices[0] == 1 && dices[1] == 2 && dices[2] == 3) {
+                yaku = "ヒフミ";
+                score = -2;
+            } else if (dices[0] == dices[1] || dices[1] == dices[2]) {
+                yaku = "役あり"
+                score = 1;
+            }
+        }
+        let message = yaku + "（" + score + "点）";
+        document.querySelector("#message").textContent = message;
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>要素の追加と削除（キュー版）</title>
+    <style>
+      #flex {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      div.item {
+        width: 120px;
+        height: 120px;
+        margin: 2px;
+        background: blue;
+        line-height: 120px;
+        text-align: center;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <input type="submit" id="add" value="＋追加">
+      <input type="submit" id="sub" value="−削除">
+
+    </p>
+    <div id="flex">
+
+    </div>
+    <script type="text/javascript">
+      let count = 1;
+      document.querySelector("#add").addEventListener("click", add);
+      document.querySelector("#sub").addEventListener("click", sub);
+      function add() {
+        let flex = document.querySelector("#flex");
+        let child = document.createElement("div");
+        child.className = "item";
+        child.innerHTML = count;
+        count++;
+        flex.appendChild(child);
+      }
+      function sub() {
+        flex.removeChild(flex.firstElementChild)
+      }
+
+    </script>
+  </body>
+</html>

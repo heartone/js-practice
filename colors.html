@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>色</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+        li {
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin-bottom: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul id="color-select">
+
+    </ul>
+    <script>
+        const colors = ["red", "orange", "yellow", "green", "blue", "purple"];
+        const container = document.querySelector("#color-select");
+        colors.forEach((color) => {
+            let li = document.createElement("li");
+            li.textContent = color;
+            li.style.backgroundColor = color;
+            li.addEventListener('click', function () {
+                document.querySelector('body').style.backgroundColor = color;
+            })
+            container.appendChild(li);
+        })
+    </script>
+</body>
+</html>

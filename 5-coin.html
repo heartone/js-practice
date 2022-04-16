@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コイン問題</title>
+</head>
+<body>
+
+    <script>
+        const coin = [1, 5, 10, 50, 100, 500];
+        let memo = [0, 0, 0, 0, 0, 0];
+
+        function func_pay(x){
+            let ans = 0;//必要枚数
+            for(let i = coin.length - 1; i >= 0 ; i--){//一種類ずつ硬貨を使えるか見ていく
+                /*
+                //愚直な方法
+                while(x >= coin[i]){//coin[i]円玉(500～1円玉)を使えるだけ使い、残りの金額xから残額を減らしていく
+                    x -= coin[i];
+                    memo[i]++;//使った枚数をメモ
+                    ans++;
+                }
+                */
+               //%演算を使うとさらに効率的に解ける
+                memo[i] = parseInt(x / coin[i]);
+                ans += memo[i];
+                x %= coin[i];
+            }
+            return ans;
+        }
+
+        let num = parseInt(prompt("金額を入力"));//入力
+        document.write(num + "円の支払いには" + func_pay(num) + "枚必要です。<br>");
+
+        for(let i = memo.length - 1; i >= 0; i--){
+            if(memo[i] >= 1){
+                document.write(coin[i] + "円玉が" + memo[i] + "枚 ");
+            }
+        }
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+header {
+  padding: 10px 0;
+  background: #9b59b6;
+}
+header a {
+  color: #ddd;
+  text-decoration: none;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+main {
+  padding: 10px 0;
+}
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border-color: #ccc;
+  border-radius: 4px;
+}
+#text-counter {
+  float: right;
+  font-size: small;
+}
+#text-count {
+  font-size: large;
+  color: #666;
+}
+ul {
+  padding: 0;
+  list-style: none;
+}
+li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+.date {
+  font-size: 12px;
+  margin-top: 8px;
+  color: #777;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コイン問題Extra</title>
+</head>
+<body>
+    <script>
+        const coin = [1, 6, 13];
+        //大きな硬貨から単純に使っていく方式だと、18円の支払いに(13,1,1,1,1,1)だが、最適なのは(6,6,6)
+
+        const MAX = 10000;//硬貨だけで支払う上限を決めておく
+        const INF = 99999;//適当な大きい数字
+        let ans = new Array(MAX).fill(INF);//その金額を支払う硬貨の最小枚数メモ配列、INF枚必要と仮定して、それより少ない枚数で支払えたら更新していく
+        let memo = new Array(MAX).fill(new Array(coin.length).fill(0));//メモ用、配列の配列memo = [[0,0,0], [0,0,0], ...]
+
+        //配るDP、最小枚数を金額の小さい方から確定させていく
+        ans[0] = 0;//0円の支払いは0枚
+        for(let i = 0;i < MAX; i++){//必要枚数を1円から(MAX-1)円まで順に確定させていく
+            //ここに来た時点でans[i]は最適解で確定
+            for(let j = 0;j < coin.length; j++){
+                if(i + coin[j] < MAX){//要素外アクセス防止
+                    if(ans[i] + 1 < ans[i + coin[j]]){//すでにメモした答えより少ない枚数にできるなら
+                        ans[i + coin[j]] = ans[i] + 1;
+                        memo[i + coin[j]] = memo[i].slice(0,coin.length);
+                        memo[i + coin[j]][j]++;
+                    }
+                }
+            }
+        }
+
+        //もらうDP
+        //{(求めたい金額 - coin[i])円に必要な最小枚数}の最小値 + 1枚が求めたい金額の最小枚数
+        //再帰関数になると思う。時間があれば書く
+
+        //入力・出力
+        let num = parseInt(prompt("金額を入力：0～9999"));//入力
+        document.write(num + "円の支払いには" + ans[num] + "枚必要です。<br>");
+
+        
+        for(let i = coin.length - 1; i >= 0; i--){
+            if(memo[num][i] >= 1){
+                document.write(coin[i] + "円玉が" + memo[num][i] + "枚 ");
+            }
+        }
+        
+
+
+    </script>
+</body>
+</html>

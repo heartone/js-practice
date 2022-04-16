@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Micro Blog</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+      header {
+        padding: 10px 0;
+        background: #9b59b6;
+      }
+      header a {
+        color: #ddd;
+        text-decoration: none;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 10px;
+      }
+      main {
+        padding: 10px 0;
+      }
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        border-color: #ccc;
+        border-radius: 4px;
+      }
+      #text-counter {
+        float: right;
+        font-size: small;
+      }
+      #text-count {
+        font-size: large;
+        color: #666;
+      }
+
+      ul {
+        padding: 0;
+        list-style: none;
+      }
+      li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        white-space: pre-line;
+        word-wrap: break-word;
+      }
+      .date {
+        font-size: x-small;
+        margin-top: 5px;
+        color: #777;
+      }
+    </style>
+
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a href="">Micro Blog</a>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <form>
+          <p>
+            <textarea rows="4" placeholder="何かひと言"></textarea>
+          </p>
+          <input type="submit" value="投稿する">
+          <div id="text-counter">
+            <span id="text-count">0</span>
+            文字
+          </div>
+        </form>
+        <ul></ul>
+      </div>
+
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>

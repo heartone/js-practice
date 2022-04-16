@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>円</title>
+    <style>
+      #circle {
+        background: #ccc;
+        border-radius: 50%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <input type="range" id="range" name="range" min="100" max="300" value="200">
+    </p>
+    <div id="circle"></div>
+
+    <script>
+      let range = document.querySelector("#range");
+      range.addEventListener("change", draw);
+      function draw() {
+        const circle = document.querySelector("#circle");
+        circle.style.width = range.value + "px";
+        circle.style.height = range.value + "px";
+        circle.style.lineHeight = range.value + "px";
+        circle.innerHTML = "直径 " + range.value + "px";
+      }
+      draw();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>かくれんぼ</title>
+    <style>
+        body {
+            line-height: 1.1rem;   
+            letter-spacing: 0.1rem;         
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <input id="char1" type="text" size="" placeholder="誰がかくれる？">
+        <input id="char2" type="text" placeholder="どこにかくれる？">
+        <select id="size">
+            <option value="5">イージー</option>
+            <option value="10" selected>ノーマル</option>
+            <option value="20">ハード</option>
+            <option value="50">クレイジー</option>            
+        </select>
+        <button onclick="start()">もういいかい？</button>        
+    </p>
+    <div id="field"></div>
+    <script>
+        function start() {
+            console.log('start')
+            const me = document.querySelector("#char1").value;
+            const others = document.querySelector("#char2").value;
+            const size = document.querySelector("#size").value
+            const field = document.querySelector("#field")
+            field.innerHTML = "";
+            let x = Math.floor(Math.random() * size);
+            let y =  Math.floor(Math.random() * size);        
+            for(i = 0; i < size; i ++) {
+                for (j = 0; j < size; j ++) {
+                    if (i == x && j == y) {
+                        field.innerHTML += me;
+                    } else {
+                        field.innerHTML += others;
+                    }
+                }
+                field.innerHTML += '<br>'
+            }
+        }
+        
+    </script>
+</body>
+</html>

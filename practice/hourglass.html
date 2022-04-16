@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ひし形</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var len = 10
+      center = len / 2;
+      for(i=0; i<=len; i++) {
+        for(j=0; j<=len; j++) {
+          if (Math.abs(i - center) + Math.abs(j - center) <= Math.abs(i - center) * 2) {
+            document.write("＊")
+          } else {
+            document.write("　")
+          }
+        }
+        document.write("<br>")
+      }
+    </script>
+  </body>
+</html>
