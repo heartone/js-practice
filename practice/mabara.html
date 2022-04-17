@@ -2,14 +2,14 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>外枠＋エックス</title>
+    <title>まばら</title>
   </head>
   <body>
     <script type="text/javascript">
       let len = 10
       for(i=0; i<=len; i++) {
         for(j=0; j<=len; j++) {
-          if (i == 0 || j == 0 || i == len || j == len || i == j || i + j == len) {
+          if (i%3==0 && j%3==0) {
             document.write("＊")
           } else {
             document.write("　")

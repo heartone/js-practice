@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
     <meta charset="utf-8">
     <title>ひし形</title>
   </head>
   <body>
     <script type="text/javascript">
-      var len = 10
-      center = len / 2;
+      let len = 10
+      let center = len / 2;
       for(i=0; i<=len; i++) {
         for(j=0; j<=len; j++) {
           if (Math.abs(i - center) + Math.abs(j - center) <= center) {
