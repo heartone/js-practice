@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>リニアサーチ</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      let array = [1,3,5,7,9,7,3,5];
+      document.write(array + "<br>")
+      let num = prompt("何番を探しますか？")
+      let answer = 'Not Found';
+      for (let i = 0; i < array.length; i++) {
+        console.log(array[i] + 'は' + num + 'ですか？')
+          if (array[i] == num) {
+              answer = i + 1 + '番目が一致';
+              break;
+          }
+      }
+      document.write(answer);
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>選択ソート</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+        let arr = [1,13,5,12,0,8,7,9,7,3,5];
+        document.write(arr + "<br>")
+        for (let i = 0; i < arr.length - 1; i++) {
+            let min = i;
+            for(let k = i+1; k < arr.length; k++) {
+                if (arr[k] < arr[min]) {
+                    min = k;
+                }
+            }
+            let w = arr[i];
+            arr[i] = arr[min];
+            arr[min] = w;                                    
+        }
+        document.write(arr + "<br>")
+    </script>
+
+  </body>
+</html>
