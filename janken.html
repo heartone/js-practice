@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>じゃんけん</title>
+    <style>
+        li {
+            cursor: pointer;
+        }
+        li:hover {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <p>じゃんけんぽん！</p>
+    <p id="pon"></p>
+    <ul>
+        <li onclick="jankenpon(0)">グー</li>
+        <li onclick="jankenpon(1)">チョキ</li>
+        <li onclick="jankenpon(2)">パー</li>
+    </ul>
+    <div>
+        <p id="you"></p>
+        <p id="com"></p>
+        <p id="result"></p>
+    </div>
+    <hr>
+    <script>
+        let hands = ["グー", "チョキ", "パー"];
+        let results = ["あいこでしょ!", "あなたの負け", "あなたの勝ち"]
+        function jankenpon(you) {
+            let com = Math.floor(Math.random() * 3);
+            let judge = (you - com + 3) % 3;
+            document.querySelector("#you").textContent = "あなたは" + hands[you];
+            document.querySelector("#com").textContent = "わたしは" + hands[com];            
+            document.querySelector("#result").textContent = results[judge]
+        }
+    </script>
+</body>
+</html>
