@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>8クイーン</title>
 </head>
 <body>
@@ -61,11 +59,10 @@
             }
             return -1;//置けない
         }
-    //main
+        //main
         let board = [];
         func_solve(board);
         func_print(board);
-
 
 /*
 メモ：各列、各行に対してクイーンが必ず1つだけおいてあることになる。なぜなら縦横に攻撃範囲が伸びて8x8マスにクイーン8個だから
@@ -79,7 +76,6 @@
     これなら関数に引数渡すとき二次元配列じゃなくて済むしpushとpopも簡単。ｷﾀ――(ﾟ∀ﾟ)――!!
 
 */
-
     </script>
 </body>
 </html>

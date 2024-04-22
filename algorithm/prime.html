@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>素数</title>
 </head>
 <body>
     <script>
-        let value = prompt("素数かどうか知りたい数字は？");
-        let result=0
+        let result = 0;
         function Prime(x){
             for (let i = 2; i < x; i++){
                 if(x % i == 0){
@@ -21,6 +18,7 @@
             }
             result = 0;
         }
+        // let value = prompt("素数かどうか知りたい数字は？");
         // Prime(value)
         for(let i = 2; i  <= value; i++){
             Prime(i);

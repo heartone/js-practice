@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>バブルソート</title>
+  </head>
+  <body>
+    <script>
+        let array = [5,3,6,4,2,1];
+        console.log(array);
+        let w;
+        let first = 0;
+        while(first < array.length - 1) {
+          let i = array.length - 1;
+            while (i > first) {
+                if (array[i-1] > array[i]) {
+                    w = array[i-1];
+                    array[i-1] = array[i];
+                    array[i] = w;
+                }     
+                i--;       
+            }
+            first++
+        }
+        console.log(array);
+    </script>
+
+  </body>
+</html>
