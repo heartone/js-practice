@@ -8,6 +8,9 @@
             background: #ccc;
             border-radius: 50%;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -24,7 +27,6 @@
         const circle = document.querySelector("#circle");
         circle.style.width = range.value + "px";
         circle.style.height = range.value + "px";
-        circle.style.lineHeight = range.value + "px";
         circle.innerHTML = "直径 " + range.value + "px";
     }
     draw();
