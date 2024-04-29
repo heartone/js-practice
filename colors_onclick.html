@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>色</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+        li {
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin-bottom: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li onclick="changeColor('red')" style="background: red">red</li>
+        <li onclick="changeColor('orange')" style="background: orange">orange</li>
+        <li onclick="changeColor('yellow')" style="background: yellow">yellow</li>
+        <li onclick="changeColor('green')" style="background: green">green</li>
+        <li onclick="changeColor('blue')" style="background: blue">blue</li>
+        <li onclick="changeColor('purple')" style="background: purple">purple</li>
+    </ul>
+    <script>
+        function changeColor(color) {
+            document.querySelector('body').style.backgroundColor = color;
+        }
+    </script>
+</body>
+</html>
