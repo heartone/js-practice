@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>リニアサーチ</title>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <title>線形探索</title>
+</head>
+<body>
     <script>
-      let array = [1,3,5,7,9,7,3,5];
-      document.write(array + "<br>")
-      let num = prompt("何番を探しますか？")
-      let answer = 'Not Found';
-      for (let i = 0; i < array.length; i++) {
-        console.log(array[i] + 'は' + num + 'ですか？')
-          if (array[i] == num) {
-              answer = i + 1 + '番目が一致';
-              break;
-          }
-      }
-      document.write(answer);
+        let array = [4, 2, 1, 5, 3];
+        let target = 3;
+        let isFound = true; // 見つかったかどうかの判定フラグ
+        let i = 0;
+        while (array[i] != target) {
+            //i = i + 1;
+            i++;
+            if ( i >= array.length) {
+                isFound = false;
+                document.write("Not Found");
+                break;
+            }
+        }
+        if (isFound) {
+            document.write(i + 1 + "番目が一致");
+        }
     </script>
-
-  </body>
+</body>
 </html>
