@@ -25,7 +25,7 @@
     <script>
         let images = document.querySelectorAll('img.dice');
         dices = [];
-        for (i = 0; i < 3; i++) {
+        for (let i = 0; i < 3; i++) {
             let dice = Math.floor(Math.random() * 6) + 1
             dices.push(dice);
             images[i].src = "images/dice_" + dice + ".png";

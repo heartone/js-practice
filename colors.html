@@ -18,21 +18,26 @@
     </style>
 </head>
 <body>
-    <ul id="color-select">
-
+    <ul>
+        <li>red</li>
+        <li>orange</li>
+        <li>yellow</li>
+        <li>green</li>
+        <li>blue</li>
+        <li>purple</li>
     </ul>
     <script>
-        const colors = ["red", "orange", "yellow", "green", "blue", "purple"];
-        const container = document.querySelector("#color-select");
-        colors.forEach((color) => {
-            let li = document.createElement("li");
-            li.textContent = color;
-            li.style.backgroundColor = color;
-            li.addEventListener('click', function () {
-                document.querySelector('body').style.backgroundColor = color;
-            })
-            container.appendChild(li);
-        })
+        function changeColor(color) {
+            document.querySelector('body').style.backgroundColor = color;
+        }
+        let listItems = document.querySelectorAll("li");
+        for(let i = 0; i < listItems.length; i++) {
+            let item = listItems[i];
+            item.style.backgroundColor = item.innerHTML;
+            item.addEventListener("click", function () {
+                changeColor(item.innerHTML);
+            });
+        }
     </script>
 </body>
 </html>
