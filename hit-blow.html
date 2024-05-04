@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヒットアンドブロー</title>
+    <style>
+        caption {
+            font-size: 16px;
+            padding: 8px;
+            background-color: #143384;
+            color: #fff;
+            
+        }
+        table {
+            margin-bottom: 10px;
+            border-collapse: collapse;
+            border: 1px solid #eee;
+            font-size: 13px;
+        }
+        th {
+            padding: 6px 12px;
+            border: 1px solid #908FD2;
+            color: #fff;
+            background-color: #6c6cc3;
+        }
+        td {
+            padding: 6px 12px;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+        #input-number {
+            width: 100px;
+            padding: 4px;
+            border: 1px solid #ddd;
+            vertical-align: middle;
+            font-size: 18px;
+            text-align: center;
+        }
+        button {
+            padding: 4px;
+        }
+        #notice {
+            margin-top: 5px;
+            font-size: 12px;
+            color: #666;
+        }
+        #result-area {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>ヒットアンドブローゲーム</caption>
+        <thead>
+            <tr>
+                <th>回数</th><th>あなたの推理</th><th>ヒット</th><th>バイト</th>
+            </tr>
+        </thead>
+        <tbody id="result-data">
+            <!-- 結果をここに追加 -->
+        </tbody>
+    </table>
+    <div id="input-area">
+        <form onsubmit="hitAndBlow(event)">
+            <input type="text" id="input-number" maxlength="3">
+            <button>入力</button>
+        </form>
+        <div id="notice">3桁の数字を入力してください</div>
+    </div>
+    <div id="result-area">正解！</div>
+
+    <script>
+        const DIGIT_COUNT = 3;
+        const resultTable = document.getElementById('result-data');
+        let answers = generateAnswers(DIGIT_COUNT); // 答え
+        let gameCount = 0;
+
+        // 入力フォーム
+        const inputNumber = document.getElementById("input-number");
+        inputNumber.maxlength = DIGI_COUNT;
+
+        function generateAnswers(count) {
+            let numbers = Array.from({ length: 10 }, (_, i) => i.toString()); // 0から9の数字の配列を作成
+            numbers = numbers.sort(() => Math.random() - 0.5).slice(0, count); // 配列をランダムにシャッフルしてN桁を取り出す
+            return numbers;
+        }
+
+        function hitAndBlow(e) {
+            e.preventDefault();
+            const answerInput = document.getElementById("input-number").value;
+            const answerList = answerInput.split(''); // 文字列を配列に変換
+
+            // 初期化
+            let hit = 0;
+            let blow = 0;
+
+            // 試行回数を増やす
+            gameCount++;
+
+            // 判定
+            for (let i = 0; i < answerList.length; i++) {
+                const num = answerList[i];
+                if (num === answers[i]) {
+                    hit++;
+                } else if (answers.includes(num)) {
+                    blow++;
+                }
+            }
+
+            // 結果を表示
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `<td>${gameCount}</td><td>${answerInput}</td><td>${hit}</td><td>${blow}</td>`;
+            resultTable.appendChild(newRow);
+
+            // 全ての数字が一致したらゲーム終了
+            if (hit === DIGIT_COUNT) {
+                document.querySelector('#input-area').style.display = 'none';
+                document.querySelector('#result-area').style.display = 'block';
+                const rows = document.querySelectorAll('tr');
+                rows[rows.length-1].style.backgroundColor = '#fdf175';
+            }
+
+            // 入力フォームをクリア
+            inputNumber.value = '';
+            inputNumber.focus();
+        }
+    </script>
+</body>
+</html>
