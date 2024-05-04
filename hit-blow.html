@@ -79,10 +79,10 @@
 
         // 入力フォーム
         const inputNumber = document.getElementById("input-number");
-        inputNumber.maxlength = DIGI_COUNT;
+        inputNumber.maxlength = DIGIT_COUNT;
 
         function generateAnswers(count) {
-            let numbers = Array.from({ length: 10 }, (_, i) => i.toString()); // 0から9の数字の配列を作成
+            let numbers = '1234567890'.split(''); // 0から9の数字の配列を作成           
             numbers = numbers.sort(() => Math.random() - 0.5).slice(0, count); // 配列をランダムにシャッフルしてN桁を取り出す
             return numbers;
         }
