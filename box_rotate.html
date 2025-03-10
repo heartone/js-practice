@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>要素の追加と削除（回転版）</title>
+    <style>
+        ul {
+            display: flex;
+            list-style: none;
+        }
+        li {
+            width: 100px;
+            height: 100px;
+            margin: 2px;
+            background: blue;
+            line-height: 100px;
+            text-align: center;
+            color: #fff;
+        }
+        li#num_1 {
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button onclick="right()">左回転</button>
+        <button onclick="left()">右回転</button>        
+    </div>
+    <ul></ul>
+    
+    <script>
+        let ul = document.querySelector("ul");
+        let numbers = [1, 2, 3, 4, 5]; 
+        draw(); 
+        // 先頭を削除して末尾へ追加
+        function right() {
+            numbers.push(numbers.shift()); 
+            draw();
+        }
+        // 末尾を削除して先頭へ追加
+        function left() {
+            numbers.unshift(numbers.pop()); 
+            draw();            
+        }
+        // 配列の中身を画面に描画する
+        function draw() {
+            ul.innerHTML = "";
+            for(let i = 0; i < numbers.length; i++) {
+                ul.innerHTML += `<li id="num_${numbers[i]}">${numbers[i]}</li>`;
+            }
+         }
+    </script>
+</body>
+</html>
